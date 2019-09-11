@@ -70,8 +70,14 @@ var app = {
         );
     },
     notifyUser: function (message) {
+        
         //MOD SIMONE:
-        alert(message);
+        alert(message);            
+        statusDiv.innerHTML = message;
+            setTimeout(function() {
+                statusDiv.innerHTML = "";
+            }, 3000);
+
         if (android) {
             toast.showShort(message);
         } else {
