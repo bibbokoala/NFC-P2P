@@ -29,6 +29,7 @@ var app = {
         document.forms[0].elements.payload.disabled = false;
     },
     shareMessage: function () {
+        app.notifyUser("function shareMessage");
         var mimeType = document.forms[0].elements.mimeType.value,
             payload = document.forms[0].elements.payload.value,
             record = ndef.mimeMediaRecord(mimeType, nfc.stringToBytes(payload));
@@ -38,6 +39,7 @@ var app = {
         nfc.share(
             [record],
             function () {
+                app.notifyUser("nfc.share");
                 if (bb10) {
                     // Blackberry calls success as soon as the Card appears
                     checkbox.checked = false;
@@ -70,14 +72,12 @@ var app = {
         );
     },
     notifyUser: function (message) {
-        
-        //MOD SIMONE:
-        alert(message);            
+        //MOD SIMONE:         
         statusDiv.innerHTML = message;
-            setTimeout(function() {
-                statusDiv.innerHTML = "";
-            }, 3000);
-
+        setTimeout(function() {
+            statusDiv.innerHTML = "";
+        }, 3000);
+        /***
         if (android) {
             toast.showShort(message);
         } else {
@@ -86,6 +86,7 @@ var app = {
                 statusDiv.innerHTML = "";
             }, 3000);
         }
+        */
     },
     showSampleData: function() {
         var mimeTypeField = document.forms[0].elements.mimeType,
