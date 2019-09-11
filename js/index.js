@@ -32,23 +32,10 @@ var app = {
         var mimeType = document.forms[0].elements.mimeType.value,
             payload = document.forms[0].elements.payload.value,
             record = ndef.mimeMediaRecord(mimeType, nfc.stringToBytes(payload));
-        app.notifyUser("function shareMessage: " + payload);
         app.disableUI();
+        app.notifyUser("function shareMessage: " + payload);
+        app.notifyUser("record: " + record);
 
-        /* MOD SIMONE */
-        var message = [
-            ndef.textRecord("hello, world")
-        ];
-        nfc.share(message, 
-                  function (){
-                    app.notifyUser("nfc.share");
-                  }, 
-                  function (reason) {
-                    alert("Failed to share tag " + reason);
-                    checkbox.checked = false;app.enableUI();
-                  }
-                 );
-        /****
         nfc.share(
             [record],
             function () {
@@ -71,7 +58,6 @@ var app = {
                 app.enableUI();
             }
         );
-        ***/
 
     },
     unshareMessage: function () {
