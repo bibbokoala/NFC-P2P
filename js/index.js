@@ -35,12 +35,6 @@ var app = {
         app.disableUI();
         app.notifyUser("function shareMessage: " + payload);
 
-        var message = [
-            ndef.textRecord("hello, world")
-        ];
-
-        nfc.share(message);
-        /****** MOD SIMONE
         nfc.share(
             [record],
             function () {
@@ -63,7 +57,6 @@ var app = {
                 app.enableUI();
             }
         );
-        *************/
 
     },
     unshareMessage: function () {
