@@ -38,6 +38,9 @@ var app = {
         nfc.share(
             [record],
             function () {
+                navigator.notification.vibrate(100);
+                app.notifyUser("Sent Message to Peer");
+                /***
                 app.notifyUser("nfc.share");
                 if (bb10) {
                     // Blackberry calls success as soon as the Card appears
@@ -51,6 +54,7 @@ var app = {
                     navigator.notification.vibrate(100);
                     app.notifyUser("Sent Message to Peer");
                 }
+                ***/
             }, function (reason) {
                 alert("Failed to share tag " + reason);
                 checkbox.checked = false;
