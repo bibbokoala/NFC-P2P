@@ -70,6 +70,8 @@ var app = {
         );
     },
     notifyUser: function (message) {
+        //MOD SIMONE:
+        alert(message);
         if (android) {
             toast.showShort(message);
         } else {
