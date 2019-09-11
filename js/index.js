@@ -34,7 +34,6 @@ var app = {
             record = ndef.mimeMediaRecord(mimeType, nfc.stringToBytes(payload));
         app.disableUI();
         app.notifyUser("function shareMessage: " + payload);
-        app.notifyUser("record: " + record);
 
         nfc.share(
             [record],
